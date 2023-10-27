@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+	version="2.1">
+	<persistence-unit name="miUP">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>grupo2.model.Admin</class>
+		<class>grupo2.model.Categoria</class>
+		<class>grupo2.model.Direccion</class>
+		<class>grupo2.model.Pedido</class>
+		<class>grupo2.model.Persona</class>
+		<class>grupo2.model.Producto</class>
+		<class>grupo2.model.Productor</class>
+		<class>grupo2.model.Punto_Retiro</class>
+		<class>grupo2.model.Ronda</class>
+		<class>grupo2.model.Visitante</class>
+		<properties>
+<!--         Conexion a base de datos propia -->
+<!-- 			<property name="hibernate.hbm2ddl.auto" value="update" /> -->
+<!--             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> -->
+<!--             <property name="hibernate.connection.password" value="" /> -->
+<!--             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/testpersistencia"/> -->
+<!--             <property name="hibernate.connection.username" value="root" /> -->
+<!--             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" /> -->
+ 	        <property name="hibernate.hbm2ddl.auto" value="update" /> 
+ 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" /> 
+ 			<property name="hibernate.connection.password" value="jyaa2023_pwd3" /> 
+ 			<property name="hibernate.connection.url" value="jdbc:mysql://mysql.java.linti.unlp.edu.ar/jyaa2023_bd3?useSSL=FALSE" /> 
+ 			<property name="hibernate.connection.username" value="jyaa2023_usr3" /> 
+ 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" /> 
+		</properties>
+	</persistence-unit>
+</persistence>

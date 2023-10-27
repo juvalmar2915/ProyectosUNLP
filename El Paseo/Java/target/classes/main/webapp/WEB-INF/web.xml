@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>El_Paseo_Te_Lo_Lleva_Paladino_Blanco</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>RESTfulJersey</servlet-name>
+		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>jersey.config.server.provider.packages</param-name>
+			<param-value>grupo2.resources</param-value>
+		</init-param>
+		<init-param>
+			<param-name>jakarta.ws.rs.Application</param-name>
+			<param-value>grupo2.resources.AppConfig</param-value>
+		</init-param>
+
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RESTfulJersey</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>OpenApi</servlet-name>
+		<servlet-class>io.swagger.v3.jaxrs2.integration.OpenApiServlet</servlet-class>
+		<init-param>
+			<param-name>openApi.configuration.resourcePackages</param-name>
+			<param-value>grupo2.resources</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OpenApi</servlet-name>
+		<url-pattern>/openapi/*</url-pattern>
+	</servlet-mapping>
+<!-- 	<servlet> -->
+<!-- 		<servlet-name>jersey-servlet</servlet-name> -->
+<!-- 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class> -->
+<!-- 		<init-param> -->
+<!-- 			<param-name>jakarta.ws.rs.Application</param-name> -->
+<!-- 			<param-value>grupo2.resources.Appconfig</param-value> -->
+<!-- 		</init-param> -->
+<!-- 		<load-on-startup>3</load-on-startup> -->
+<!-- 	</servlet> -->
+	<filter>
+		<filter-name>CorsFilter</filter-name>
+<!-- 		<filter-class>grupo2.resources.CorsFilter</filter-class> -->
+		<filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CorsFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>
