@@ -1,0 +1,42 @@
+<div *ngIf="dataLoaded">
+    <div class="container-lg">
+      <h1>Historial de Rondas:</h1>
+      <button type="button" class="btn btn-success btn-rounded" mdbRipple routerLink="/RegistrarRonda"> Registrar Proxima Ronda</button>
+      <table class="table mt-3">
+          <thead>
+            <tr class="table-secondary">
+              <th scope="col">Nro</th>
+              <th scope="col">Fecha Inicio</th>
+              <th scope="col">Fecha Fin</th>
+              <th scope="col">Fecha Retiro</th>
+              <th scope="col">Hora Inicio</th>
+              <th scope="col">Hora Fin</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-success">
+            <td>{{ rondas[rondas.length-1].nroRonda }}</td>
+            <td>{{ rondas[rondas.length-1].fechaIni | date: 'mediumDate'}}</td>
+            <td>{{ rondas[rondas.length-1].fechaFin | date: 'mediumDate'}}</td>
+            <td>{{ rondas[rondas.length-1].fechaRetiro | date: 'mediumDate'}}</td>
+            <td>{{ rondas[rondas.length-1].horaIni | date: 'shortTime'}}</td>
+            <td>{{ rondas[rondas.length-1].horaFin | date: 'shortTime'}}</td>
+            <td> Ronda Actual</td>
+            </tr>
+            <ng-container *ngFor="let ronda of rondas">
+            <tr class="table-info">
+              
+              <td>{{ ronda.nroRonda }}</td>
+              <td>{{ ronda.fechaIni | date: 'mediumDate'}}</td>
+              <td>{{ ronda.fechaFin | date: 'mediumDate'}}</td>
+              <td>{{ ronda.fechaRetiro | date: 'mediumDate'}}</td>
+              <td>{{ ronda.horaIni | date: 'shortTime'}}</td>
+              <td>{{ ronda.horaFin | date: 'shortTime'}}</td>
+              <td><button type="button" class="btn btn-danger btn-rounded" mdbRipple (click)="eliminarRonda(ronda.nroRonda)"><i class="bi bi-trash"></i></button> <p></p><button type="button" class="btn btn-primary btn-rounded" [routerLink]="['/editar-ronda', ronda.nroRonda]"><i class="bi bi-pencil-square"></i></button></td>
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+    </div>
+    </div>

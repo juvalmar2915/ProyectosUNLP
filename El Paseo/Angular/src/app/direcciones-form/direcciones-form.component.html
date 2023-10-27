@@ -1,0 +1,27 @@
+
+    <div class="container mt-4">
+        <h2>Alta de Dirección</h2>
+        <form (ngSubmit)="onSubmit()" #DireccionesForm="ngForm">
+            <div class="form-group">
+                <label for="calle">Calle:</label>
+                <input type="text" class="form-control" id="calle" name="calle" [(ngModel)]="direccion.calle" required>
+            </div>
+
+            <div class="form-group">
+                <label for="numero">Número:</label>
+                <input type="text" class="form-control" id="numero" name="numero" [(ngModel)]="direccion.numero" required>
+            </div>
+
+            <div class="form-group">
+                <label for="piso">Piso:</label>
+                <input type="text" class="form-control" id="piso" [(ngModel)]="direccion.piso" name="piso">
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea class="form-control" id="descripcion" name="descripcion"  [(ngModel)]="direccion.descripcion" rows="4" cols="50"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="!DireccionesForm.form.valid">Guardar Dirección</button>
+        </form>
+    </div>

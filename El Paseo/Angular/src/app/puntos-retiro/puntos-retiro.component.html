@@ -1,0 +1,28 @@
+<div *ngIf="dataLoaded">
+    <div class="container-lg">
+      <h1>Lista de Puntos de Retiro:</h1>
+      <button type="button" class="btn btn-success btn-rounded" mdbRipple routerLink="/RegistrarPuntoRetiro"> Registrar un Punto de Retiro</button>
+      <table class="table mt-3">
+          <thead>
+            <tr class="table-secondary">
+              <th scope="col">ID</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Calle y numero</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <ng-container *ngFor="let puntor of puntosretiro">
+            <tr class="table-info">
+              
+              <td>{{ puntor.id }}</td>
+              <td>{{ puntor.nombre }}</td>
+              <td>{{ puntor.direccion.calle }} n° {{ puntor.direccion.numero }}</td>
+              <td><button type="button" class="btn btn-danger btn-rounded" mdbRipple (click)="eliminarPuntoRetiro(puntor.id)"><i class="bi bi-trash"></i></button><p></p><button type="button" class="btn btn-primary btn-rounded" [routerLink]="['/editar-punto-retiro', puntor.id]"><i class="bi bi-pencil-square"></i></button></td>
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+    </div>
+    </div>

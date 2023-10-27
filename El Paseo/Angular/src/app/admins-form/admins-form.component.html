@@ -1,0 +1,39 @@
+
+
+   
+<section class="vh-50 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+              
+              <div class="mb-md-1 mt-md-1 pb-2">
+                <form (ngSubmit)="onSubmit()" #AdminsForm="ngForm">
+                <h2 class="fw-bold mb-2 text-uppercase">Registrar Administrador</h2>
+                <p class="text-50 mb-3">Ingresar datos de nuevo admin</p>
+                
+                <div class="form-outline form-white mb-3">
+                    <input type="text" id="Nombre" placeholder="Nombre y apellido" class="form-control form-control-lg" required
+                    [(ngModel)]="model.nombre" name="Nombre"/>
+                </div>
+                <div *ngIf="errorMessage" class="error-message" style="color: red;">{{ errorMessage }}</div>
+                <div class="form-outline form-white mb-3">
+                  <input type="email" id="Email" placeholder="Email" class="form-control form-control-lg" required
+                  [(ngModel)]="model.email" name="Email"/>
+                </div>
+                <div class="form-outline form-white mb-4">
+                  <input type="password" id="Contraseña" placeholder="Contraseña" class="form-control form-control-lg" required
+                  [(ngModel)]="model.contrasena" name="Contrasena"/>
+                </div>
+
+                <button class="btn btn-outline btn-lg px-5 text-white" [disabled]="!AdminsForm.form.valid" type="submit" style="background-color: #569e29;">Registrarme</button>
+                </form>
+                </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>

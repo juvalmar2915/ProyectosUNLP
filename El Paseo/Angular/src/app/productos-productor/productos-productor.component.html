@@ -1,0 +1,39 @@
+<div *ngIf="dataloaded">
+    
+                <body>
+                  <div class="container ">
+                    <h1>Listado de Productos de la ronda: {{ ronda.nroRonda }}</h1>
+                    <div *ngIf="mensaje" class="error-message" style="color: red;">{{ mensaje }}</div>
+                    <label for="filtro">Filtrar por: </label>
+                    <p></p>
+                    <label for="filtro">Productor:</label>
+                    <select id="filtro" [(ngModel)]="seleccionado" (change)="onSelect(seleccionado)">
+                        <option [ngValue]="objeto" *ngFor="let objeto of productores">{{objeto.nombre}}</option>
+                    </select>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>Precio individual</th>
+                          <th>Cantidad</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <ng-container *ngFor="let producto of productos">
+                        <tr>
+                            <td>{{producto.nombre}}</td>
+                            <td>{{producto.precio}}</td>
+                            <td>{{producto.cantidad}}</td>
+                            <td>{{producto.total}}</td>
+                            <td></td> 
+                        </tr>
+                        </ng-container>
+                      </tbody>
+                    </table>
+                  </div>
+                  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+                  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+                  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+                </body>
+    </div>

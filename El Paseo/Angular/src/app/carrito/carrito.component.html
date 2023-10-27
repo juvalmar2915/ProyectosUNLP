@@ -1,0 +1,95 @@
+<div *ngIf="dataloaded">
+  <div class="container-lg">
+    <div class="row">
+      <h3>Productos Seleccionados:</h3>
+    </div>
+<div *ngFor="let producto of productos">
+  <div class="row">
+    <div class="container-lg rounded-4 p-2 mt-3" style="background-color: rgb(197, 197, 197);">
+        <div class="row">
+            <!-- Parte del logo -->
+            <div class="col-1 mt-1 mb-1 mx-4">
+                <div class="rounded-3 d-flex align-items-center justify-content-center bg-white mx-1" style="width: 100px; height: 100px;">
+                    <img src="{{producto.foto}}" 
+                    height="75" 
+                    alt=""     
+                    loading="lazy" />
+                </div>
+            </div>
+            <div class="col-3">
+              <h4 class="mt-4">{{producto.nombre}}</h4>
+          </div>
+
+          <div class="col-4">
+              <h4 class="mt-4">Cantidad: {{producto.cantidad}}</h4>
+          </div>
+
+          <div class="col-2">
+              <h4 class="mt-4">Pu: ${{producto.precio}}</h4>
+          </div>
+
+          <div class="col-1">
+            <button type="button" class="btn btn-danger px-5 mt-4" mdbRipple (click)="eliminarproductodelcarrito(producto.id)">x</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="row">
+  <div class="container-lg">
+      <div class="row">
+          <div class="col-1 mt-1 mb-1 mx-4"></div>
+          <div class="col-3"></div>
+          <div class="col-4"></div>
+          <div class="col-2"><h4 class="mt-4">Total: ${{ pedido.total }}</h4></div>
+          <div class="col-1 text-center" *ngIf="!nohaycosas"><button type="button" class="btn btn-danger mt-4 px-4" mdbRipple (click)="vaciarcarrito()">Vaciar Carrito</button></div>
+      </div>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-4"><h4>Como prefiere obtener el producto:</h4></div>
+  <div class="col-4"><h5><input type="checkbox" (change)="mostrarpuntoRet()" [disabled]="direccionCheckbox">Retiro por mi cuenta</h5></div>
+  
+  <div class="col-4"><h5><input type="checkbox" (change)="mostrardirec()" [disabled]="retiroCheckbox">Envio a domicilio</h5></div>
+</div>
+  
+
+<form (submit)="onSubmit()">
+<div *ngIf="retiroCheckbox">
+    <div class="form-group">
+        <label for="puntoretiro">Punto Retiro</label>
+        <select class="form-control" id="puntoretiro" [(ngModel)]="selectedPuntoRetiro" name="puntoretiro">
+          <option *ngFor="let puntoretiro of puntoretiros" [ngValue]="puntoretiro">{{ puntoretiro.nombre }}</option>
+        </select>
+    </div>
+</div>
+
+<div *ngIf="direccionCheckbox">
+  <div class="row mt-5">
+
+    <div class="form-group">
+      <label  for="direccion">Dirección</label>
+      <select class="form-control" id="direccion" [(ngModel)]="selectedDireccion" name="direccion">
+        <option *ngFor="let direccion of direcciones" [ngValue]="direccion">{{ direccion.calle}} n° {{ direccion.numero }}</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+        <label  for="horario">Horario</label>
+        <select class="form-control" id="horario" [(ngModel)]="selectedHorario" name="horario">
+          <option *ngFor="let horario of horarios" [value]="horario">{{ horario }}</option>
+        </select>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="mensaje" class="error-message" style="color:red;">{{ mensaje }}</div>
+<div class="row mt-5 ">
+  <div class="col-5"></div>
+    <div class="col-5"></div>
+    <div class="col-2" *ngIf="!nohaycosas"><button type="submit" class="btn btn-success" style="float: right;" mdbRipple>Confirmar carrito</button></div>
+</div>
+</form>
+</div>
+</div>

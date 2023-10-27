@@ -1,0 +1,200 @@
+<!-- Navbar-->
+
+<!-- Sin loguear  -->
+    <nav *ngIf="rol == 'loguear'" class="navbar navbar-expand-lg" style="background-color: #40A600;">
+    
+        <div class="container-fluid justify-content-between">
+          <!-- Left elements -->
+          <div class="d-flex">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">
+              <img
+                src="{{logo}}"
+                height="45"
+                alt=""
+                loading="lazy"
+                style="margin-top: 2px;"
+              />
+            </a>
+            <!--</div>
+            <div class="d-flex" style="background-color: #40A600;">-->
+            <!-- Se puede agregar otra cosa al lado del logo -->
+            <ul class="navbar-nav flex-row d-none d-md-flex">
+                <li class="nav-item me-3 me-lg-1 mt-2">
+                    
+                  <a class="nav-link text-white" routerLink="/Catalogo">Catalogo</a>
+                </li>
+          
+                <li class="nav-item me-3 me-lg-1 mt-2">
+                  <a class="nav-link text-white" href="#">Productores</a>
+                </li>
+          
+                <li class="nav-item me-3 me-lg-1 mt-2">
+                  <a class="nav-link text-white" routerLink="/Acerca">Acerca de</a>
+                </li>
+              </ul>
+          </div>
+          <!-- Left elements -->
+      
+          <!-- Right elements -->
+          <ul class="navbar-nav">
+            <li class="nav-item me-3 me-lg-1 active">
+              <a class="nav-link text-white" routerLink="/Registrar">Resgistrarse</a>
+            </li>
+      
+            <li class="nav-item me-3 me-lg-1">
+              <a class="nav-link text-white" routerLink="/Login">Iniciar Sesion</a>
+            </li>
+          </ul>
+          <!-- Right elements -->
+        </div>
+      </nav>
+  
+  <!-- Admin  -->
+  <nav *ngIf="rol == 'admin'" class="navbar navbar-expand-lg navbar-light bg-verdeElPaseo" style="background-color:#40A600;">
+  
+    <div class="container-fluid justify-content-between">
+      <!-- Left elements -->
+      <div class="d-flex">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">
+          <img
+            src="{{logo}}"
+            height="45"
+            alt=""
+            loading="lazy"
+            style="margin-top: 2px;"
+          />
+        </a>
+    
+          <!-- Se puede agregar otra cosa al lado del logo -->
+          <ul class="navbar-nav flex-row d-none d-md-flex">
+              <li class="nav-item me-3 me-lg-1 active mt-2">
+                <a class="nav-link text-white" routerLink="/Catalogo">Catalogo</a>
+              </li>
+        
+              <li class="nav-item me-3 me-lg-1 mt-2">
+                <a class="nav-link text-white" routerLink="/Productos">Gestion Productos</a>
+              </li>
+
+              <li class="nav-item me-3 me-lg-1 mt-2">
+                <a class="nav-link text-white" routerLink="/Productores">Productores</a>
+              </li>
+        
+              <li class="nav-item me-3 me-lg-1 mt-2">
+                <a class="nav-link text-white" routerLink="/Categorias">Rubros</a>
+              </li>
+        
+
+              <li class="nav-item me-3 me-lg-1 mt-2">
+                <a class="nav-link text-white" routerLink="/Rondas">Historial de rondas</a>
+              </li>
+        
+              <li class="nav-item me-3 me-lg-1 mt-2">
+                <a class="nav-link text-white" routerLink="/PuntosRetiro">Nodos</a>
+              </li>
+  
+              <li class="nav-item me-3 me-lg-1 mt-2">
+                  <a class="nav-link text-white" routerLink="/ListaAdmins">Gestionar administradores</a>
+              </li>
+  
+              <li class="nav-item me-3 me-lg-1 mt-2">
+              <a class="nav-link text-white" routerLink="/ListaVisitantes">Gestionar usuarios</a>
+              </li>
+
+              <li class="nav-item me-3 me-lg-1 mt-2">
+                <a class="nav-link text-white" routerLink="/GestionPedidos">Gestionar pedidos</a>
+              </li>
+              
+              <li class="nav-item me-3 me-lg-1 mt-2">
+                <a class="nav-link text-white" routerLink="/PedidosProductor">Lista Pedidos</a>
+              </li>
+              <li class="nav-item me-3 me-lg-1 mt-2">
+                <a class="nav-link text-white" routerLink="/ProductosProductor">Lista Productos</a>
+              </li>
+            </ul>
+        </div>
+        <!-- Left elements -->
+    
+        <!-- Right elements -->
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown me-5 me-lg-2 mt-2 mx-1">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Admin
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item text-danger" (click)="cerrarSesion()">Cerrar sesion</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- Right elements -->
+      </div>
+    </nav>
+  
+  <!-- Visitante  -->
+    <nav *ngIf="rol == 'visitante'" class="navbar navbar-expand-lg navbar-light bg-verdeElPaseo" style="background-color: #40A600;">
+    
+      <div class="container-fluid justify-content-between">
+        <!-- Left elements -->
+        <div class="d-flex">
+          <!-- Brand -->
+          <a class="navbar-brand" href="#">
+            <img
+              src="{{logo}}"
+              height="45"
+              alt=""
+              loading="lazy"
+              style="margin-top: 2px;"
+            />
+          </a>
+      
+            <!-- Se puede agregar otra cosa al lado del logo -->
+            <ul class="navbar-nav flex-row d-none d-md-flex">
+                <li class="nav-item me-3 me-lg-1 active mt-2">
+                  <a class="nav-link text-white" routerLink="/Catalogo">Catalogo</a>
+                </li>
+          
+                <li class="nav-item me-3 me-lg-1 mt-2">
+                  <a class="nav-link text-white" routerLink="/Pedidos">Pedidos</a>
+                </li>
+
+                <li class="nav-item me-3 me-lg-1 mt-2">
+                  <a class="nav-link text-white" routerLink="/Productores">Productores</a>
+                </li>
+
+                <li class="nav-item me-3 me-lg-1 mt-2">
+                  <a class="nav-link text-white" routerLink="/Acerca">Acerca de</a>
+                </li>
+              </ul>
+          </div>
+          <!-- Left elements -->
+      
+          <!-- Right elements -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/Carrito" *ngIf="!pedidoconfirmado">
+                  <span><i class="bi bi-cart" style="font-size: 1.5em;"></i></span>
+                  <span *ngIf="displaydata" class="badge badge-pill bg-danger">{{pedido.productos.length}}</span>
+                </a>
+                <a class="nav-link" *ngIf="pedidoconfirmado">
+                  <span><i class="bi bi-cart" style="font-size: 1.5em;"></i></span>
+                </a>
+            </li>
+            <li class="nav-item dropdown me-5 me-lg-2 mt-2">
+              <a class="nav-link dropdown-toggle text-white" *ngIf="displaydata" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{visitante.nombre}}
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" routerLink="/EditarPerfil">Modificar perfil</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" (click)="cerrarSesion()">Cerrar sesion</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!-- Right elements -->
+        </div>
+    
+      </nav>
+
+    <!-- Navbar -->
+  

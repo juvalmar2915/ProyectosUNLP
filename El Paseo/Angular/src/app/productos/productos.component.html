@@ -1,0 +1,48 @@
+<div *ngIf="dataLoaded">
+    <div class="container-lg">
+      <h1>Lista de Productos:</h1>
+      <button type="button" class="btn btn-success btn-rounded" mdbRipple routerLink="/RegistrarProducto"> Registrar un Producto</button>
+      <p></p>
+      <h6>Categoria:
+        <select name="miselect" [(ngModel)]="seleccionado" (change)="onSelect(seleccionado)">
+          <option [ngValue]="objeto" *ngFor="let objeto of lista">{{objeto.nombre}}</option>
+          </select>
+      </h6>
+      <table class="table mt-3">
+          <thead>
+            <tr class="table-secondary">
+              <th scope="col">ID</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Productor</th>
+              <th scope="col">Foto</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <ng-container *ngFor="let producto of productos">
+            <tr class="table-warning">
+              
+              <td>{{ producto.id }}</td>
+              <td>{{ producto.nombre }}</td>
+              <td>{{ producto.productor.nombre }}</td>
+              <td>
+                <div class="col-2 px-0">
+                  <div class="rounded-5 d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                      <img [src]="producto.foto" 
+                      height="80" 
+                      alt=""
+                      loading="lazy" />
+                  </div>
+                </div>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger btn-rounded" mdbRipple (click)="eliminarProducto(producto.id)"><i class="bi bi-trash"></i></button><p></p>
+                <button type="button" class="btn btn-primary btn-rounded" [routerLink]="['/editar-producto', producto.id]"><i class="bi bi-pencil-square"></i></button>
+              </td>
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+    </div>
+    </div>

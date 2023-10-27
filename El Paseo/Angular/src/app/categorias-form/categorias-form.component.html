@@ -1,0 +1,22 @@
+<html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Registrar Categoria</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+      <div class="container">
+        <h2>Registro de Categoria</h2>
+        <form (ngSubmit)="onSubmit()" #CategoriasForm="ngForm">
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="model.nombre" name="nombre" placeholder="Ingrese nombre de la categoria">
+          </div>
+          <button type="submit" class="btn btn-primary"  [disabled]="!CategoriasForm.form.valid" style="background-color: #569e29;">Registrar</button>
+        </form>
+      </div>
+    
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </body>
+</html>

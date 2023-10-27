@@ -1,0 +1,31 @@
+<html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Registrar Productor</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+      <div class="container">
+        <h2>Registrar un Productor</h2>
+        <form (ngSubmit)="onSubmit($event)" #ProductoresForm="ngForm">
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="model.nombre" name="nombre" placeholder="Nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="descripcion">Descripcion:</label>
+            <input type="text" class="form-control" id="descripcion" [(ngModel)]="model.descripcion" name="descripcion" placeholder="Descripcion" required>
+          </div>
+          <div class="form-group">
+            <label for="foto">Foto:</label>
+            <input type="file" (change)="onFileSelected($event)" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary" [disabled]="!ProductoresForm.form.valid"  style="background-color: #569e29;">Registrar</button>
+        </form>
+      </div>
+      <div *ngIf="errorMessage" class="error-message" style="color: red;">{{ errorMessage }}</div>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </body>
+</html>

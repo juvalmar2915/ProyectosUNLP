@@ -1,0 +1,42 @@
+<div *ngIf="dataloaded">
+            <body>
+              
+              <div class="container-lg">
+                <h1>Listado de Pedidos de la ronda: {{ ronda.nroRonda }}</h1>
+                <div *ngIf="mensaje" class="error-message" style="color: red;">{{ mensaje }}</div>
+                <label for="filtro">Filtrar por: </label>
+                <p></p>
+                <label for="filtro">Productor:</label>
+                <select id="filtro" [(ngModel)]="seleccionado" (change)="onSelect(seleccionado)">
+                    <option [ngValue]="objeto" *ngFor="let objeto of productores">{{objeto.nombre}}</option>
+                </select>
+                <p></p>
+                <label for="filtro">Modalidad de Entrega:</label>
+                <select id="filtro" [(ngModel)]="seleccionado2" (change)="onSelect2(seleccionado2)">
+                  <option value="Retiro">Retiro</option>
+                  <option value="Entrega">Delivery</option>
+                </select>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Cliente</th>
+                      <th>Productos</th>
+                      <th>Cantidad</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container *ngFor="let pedido of peds">
+                    <tr>
+                        <td>{{pedido.visitante.nombre}}</td>
+                        <td><p *ngFor="let producto of pedido.productos">{{producto.nombre}}</p></td>
+                        <td><p *ngFor="let producto of pedido.productos">{{producto.cantidad}}</p></td>
+                    </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </div>
+              <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+              <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+            </body>
+</div>
