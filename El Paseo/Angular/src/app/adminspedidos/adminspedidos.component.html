@@ -1,0 +1,39 @@
+<div *ngIf="dataLoaded">
+    <head>
+      <title>Listado de Pedidos</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    </head>
+    <body>
+      <div class="container">
+        <h1>Listado de Pedidos de la ronda: {{ ronda.nroRonda }}</h1>
+        <div *ngIf="mensaje" class="error-message" style="color: red;">{{ mensaje }}</div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Visitante</th>
+              <th>Productos</th>
+              <th>Cantidad</th>
+              <th>Entrega</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let pedido of pedidos">
+            <tr>
+                <td>{{pedido.visitante.nombre}}</td>
+                <td><p *ngFor="let producto of pedido.productos">{{producto.nombre}}</p></td> 
+                <td><p *ngFor="let producto of pedido.productos">{{producto.cantidad}}</p></td>
+                <td *ngIf="pedido.direccion">{{ pedido.direccion.calle }} n° {{ pedido.direccion.numero }}</td>
+                <td *ngIf="pedido.puntoRetiro">{{ pedido.puntoRetiro.nombre }}</td>
+                <td><button type="button" class="btn btn-light btn-rounded" mdbRipple (click)="entregarPedido(pedido)">Entregado</button></td>
+            </tr>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    </body>
+</div>

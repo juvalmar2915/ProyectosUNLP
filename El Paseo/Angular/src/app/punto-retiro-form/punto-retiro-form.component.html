@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>Registrar Punto de Retiro</title>
+  <!-- Agrega los enlaces a los archivos de Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Registrar Punto de Retiro</h2>
+
+    <form (ngSubmit)="onSubmit()" #PuntoRetiroForm="ngForm">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" [(ngModel)]="puntoretiro.nombre" placeholder="Nombre" name="Nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="direccion">Dirección:</label>
+        <input type="text" class="form-control mt-3" id="calle" [(ngModel)]="direccion.calle" name="Calle" placeholder="Calle de la dirección" required>
+        <input type="text" class="form-control mt-3" id="numero" [(ngModel)]="direccion.numero" name="Numero" placeholder="Numero de la dirección" required>
+        <div *ngIf="errorMessage" class="error-message" style="color: red;">{{ errorMessage }}</div>
+        <input type="text" class="form-control mt-3" id="descripcion" [(ngModel)]="direccion.descripcion" name="Descripcion" placeholder="Detalle de dirección" required>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!PuntoRetiroForm.form.valid" >Registrar</button>
+    </form>
+  </div>
+</body>
+</html>

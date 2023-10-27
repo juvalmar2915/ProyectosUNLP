@@ -1,0 +1,30 @@
+<div *ngIf="dataloaded">
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Editar Punto de Retiro</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+      <div class="container">
+        <h2>Edicion de Punto de Retiro</h2>
+        <form (ngSubmit)="onSubmit()" #PuntoRetiroForm="ngForm">
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="puntoretiro.nombre" name="nombre" placeholder={{puntoretiro.nombre}}>
+          </div>
+          <div class="form-group">
+            <label for="direccion">Dirección:</label>
+            <input type="text" class="form-control mt-3" id="calle" [(ngModel)]="direccion.calle" name="Calle" placeholder={{direccion.calle}} required>
+            <input type="text" class="form-control mt-3" id="numero" [(ngModel)]="direccion.numero"  name="Numero" placeholder={{direccion.numero}} required>
+            <input type="text" class="form-control mt-3" id="descripcion" [(ngModel)]="direccion.descripcion" name="Descripcion" placeholder={{direccion.descripcion}} required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="background-color: #569e29;">Guardar Cambios</button>
+        </form>
+      </div>
+    
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </body>
+    </html>
+    </div>

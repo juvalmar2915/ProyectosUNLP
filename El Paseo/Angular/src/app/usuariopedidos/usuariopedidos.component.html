@@ -1,0 +1,30 @@
+<body div *ngIf="dataLoaded">
+  <div class="container">
+    <h1>Listado de Pedidos</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Estados</th>
+          <th>Productos</th>
+          <th>Cantidad</th>
+          <th>Entrega</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let pedido of pedidos">
+        <tr *ngIf="pedido.total!=0">
+            <td>{{pedido.estado}}</td>
+            <td><p *ngFor="let producto of pedido.productos">{{producto.nombre}}</p></td> 
+            <td><p *ngFor="let producto of pedido.productos">{{producto.cantidad}}</p></td>
+            <td *ngIf="pedido.direccion">{{ pedido.direccion.calle }} n° {{ pedido.direccion.numero }}</td>
+            <td *ngIf="pedido.puntoRetiro">{{ pedido.puntoRetiro.nombre }}</td>
+            <td><button type="button" class="btn btn-light btn-rounded" *ngIf="pedido.estado==='Confirmado'" mdbRipple (click)="modificarPedido(pedido)">Modificar</button><button type="button" class="btn btn-light btn-rounded" *ngIf="pedido.estado==='Entregado'"  mdbRipple (click)="RepetirPedido(pedido)">RepetirPedido</button></td>
+            <td><button type="button" class="btn btn-danger btn-rounded" *ngIf="pedido.estado==='Confirmado'" mdbRipple (click)="cancelarPedido(pedido.id)">Cancelar Pedido</button></td>
+        </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</body>

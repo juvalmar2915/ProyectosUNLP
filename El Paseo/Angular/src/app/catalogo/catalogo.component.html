@@ -1,0 +1,68 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Buscar producto" [(ngModel)]="buscar" (keyup.enter)="onSearch(buscar)">
+          <button class="btn btn-success" type="button" (click)="realizarBusqueda()">Buscar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="container mt-2">
+    <div class="row justify-content-end">
+        <div class="col-2">
+            Categoria:
+            <select name="miselect" [(ngModel)]="seleccionado" (change)="onSelect(seleccionado)">
+                <option [ngValue]="objeto" *ngFor="let objeto of lista">{{objeto.nombre}}</option>
+                <option [ngValue]=null>Todos</option>
+            </select>
+            </div>
+            <div class="col-3">
+            Ordenar por:
+            <select [(ngModel)]="priceFilter" (ngModelChange)="filterProductsByPrice()">
+                <option value="mayor">Mayores Primero</option>
+                <option value="menor">Menores Primero</option>
+            </select>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+<div *ngFor="let producto of productos">
+    <div class="container-lg rounded-4 p-4 mt-5" style="background-color: rgb(197, 197, 197);">
+        <div class="row">
+            <!-- Parte del logo -->
+            <div class="col-2 px-0">
+                <div class="rounded-5 d-flex align-items-center justify-content-center bg-white" style="width: 200px; height: 200px;">
+                    <img src="{{producto.foto}}" 
+                    height="150" 
+                    alt=""
+                    loading="lazy" />
+                </div>
+            </div>
+    
+            <!-- Parte del medio -->
+            <div class="col-8">
+                <div class="col"><h1>{{producto.nombre}}</h1></div>
+                <div class="col mt-3"><p>{{producto.descripcion}}</p></div>
+                <div class="col mt-3"><p>Productor: {{producto.productor.nombre}}</p></div>
+            </div>
+    
+            <!-- Parte del logo -->
+            <div class="col-2">
+                <div class="row">
+                <h1>
+                <div class="col mb-5 text-center">${{producto.precio}}</div>
+                </h1>
+                <div class="col mt-5 text-center">
+                    <button *ngIf="rol == 'visitante'" type="button" class="btn btn-secondary" mdbRipple (click)="agregarProductoalcarrito(producto)" [disabled]="prohibidoagregar">Agregar al carrito</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

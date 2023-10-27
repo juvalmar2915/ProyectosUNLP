@@ -1,0 +1,27 @@
+<div class="container-lg">
+    <h2>Editar Ronda: </h2>
+    <form (ngSubmit)="onSubmit()" #RondasForm="ngForm">
+    <div class="form-group">
+      <label for="fechaInicio">Fecha de inicio:</label>
+      <input type="date" class="form-control" id="fechaIni" [(ngModel)]="fechaini1" name="fechaIni" required>
+    </div>
+    <div class="form-group">
+      <label for="fechaFin">Fecha de fin:</label>
+      <input type="date" class="form-control" id="fechaFin" [(ngModel)]="fechafin1" name="fechaFin" required>
+    </div>
+    <div class="form-group">
+      <label for="fechaRetiro">Fecha de retiro:</label>
+      <input type="date" class="form-control" id="fechaRetiro" [(ngModel)]="fecharet1"  name="fechaRetiro" required>
+    </div>
+    <div class="form-group">
+      <label for="horaini">Hora de inicio:</label>
+      <input type="time" class="form-control" id="horaini" [(ngModel)]="fecha" name="horaini"  required>
+    </div>
+    <div class="form-group">
+      <label for="horafin">Hora de fin:</label>
+      <input type="time" class="form-control" id="horafin" [(ngModel)]="fecha2"  name="horafin"  required>
+    </div>
+    <button type="submit" [disabled]="!RondasForm.form.valid" class="btn btn-primary">Editar Ronda</button>
+    <div *ngIf="errorMessage" class="error-message" style="color: red;">{{ errorMessage }}</div>
+  </form>
+</div>

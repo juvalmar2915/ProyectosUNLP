@@ -1,0 +1,40 @@
+<div *ngIf="dataLoaded">
+<div class="container-lg">
+  <h1>Administradores del sistema</h1>
+  <button type="button" class="btn btn-success btn-rounded" mdbRipple routerLink="/RegistrarAdmin"> Registrar un administrador</button>
+  <table class="table mt-3">
+      <thead>
+        <tr class="table-secondary">
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Email</th>
+          <th scope="col">Contraseña</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <ng-container *ngFor="let admin of admins">
+        <tr class="table-danger" *ngIf="admin.borrado">
+          
+          <td>{{ admin.id }}</td>
+          <td>{{ admin.nombre }}</td>
+          <td>{{ admin.email }}</td>
+          <td>{{ admin.contrasena }}</td>
+          <td><button type="button" class="btn btn-success btn-rounded" (click)="agregarAdmin(admin)"><i class="bi bi-toggle-off"></i></button></td>
+        
+        </tr>
+        
+        
+        <tr class="table-success" *ngIf="!admin.borrado">
+          <td>{{ admin.id }}</td>
+          <td>{{ admin.nombre }}</td>
+          <td>{{ admin.email }}</td>
+          <td>{{ admin.contrasena }}</td>
+          <td><button type="button" class="btn btn-danger btn-rounded" (click)="eliminarAdmin(admin.id)"><i class="bi bi-toggle-on"></i></button><p></p><button type="button" class="btn btn-primary btn-rounded" [routerLink]="['/editar-admin', admin.id]"><i class="bi bi-pencil-square"></i></button></td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+</div>
+</div>

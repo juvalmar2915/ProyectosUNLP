@@ -1,0 +1,41 @@
+    <body div *ngIf="dataloaded">
+      <div class="container">
+        <h2>Editar perfil</h2>
+        <form (ngSubmit)="onSubmit()" #VisitantesForm="ngForm">
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="visitante.nombre" name="nombre" placeholder={{visitante.nombre}}>
+          </div>
+          <div class="form-group">
+            <label for="contrasena">Contraseña Actual:</label>
+            <input type="password" class="form-control" id="contrasena" name="contrasena" [(ngModel)]="contrasena">
+            <div *ngIf="errorMessage3" class="error-message" style="color: red;">{{ errorMessage3 }}</div>
+          </div>
+          <div class="form-group">
+            <label for="contrasena2">nueva contraseña:</label>
+            <input type="password" class="form-control" id="contrasena2" [(ngModel)]="contrasena2" name="contrasena2" placeholder={{contrasena2}}>
+          </div>
+          <div class="form-group">
+            <label for="contrasena3">Vuelva a escribir la nueva contraseña:</label>
+            <input type="password" class="form-control" id="contrasena3" [(ngModel)]="contrasena3" name="contrasena3" placeholder={{contrasena3}}>
+            <div *ngIf="errorMessage2" class="error-message" style="color: red;">{{ errorMessage2 }}</div>
+          </div>
+          <div class="form-group">
+            <label for="telefono">Telefono:</label>
+            <input type="text" class="form-control" id="telefono" [(ngModel)]="visitante.telefono" name="telefono" placeholder={{visitante.telefono}}>
+          </div>
+          <button type="submit" class="btn btn-primary" style="background-color: #569e29;">Guardar Cambios</button>
+        </form>
+        <h5 class="mt-2">Direccion:
+            <select name="miselect" [(ngModel)]="direccion">
+              <option [ngValue]="objeto" *ngFor="let objeto of direcciones">{{objeto.calle}} n° {{objeto.numero}}</option>
+            </select>
+            <button type="button" class="btn btn-danger mx-3" mdbRipple (click)="EliminarDireccion()">Eliminar direccion</button>
+            <button type="button" class="btn btn-info mx-3" mdbRipple routerLink="/AgregarDireccion">Agregar Direccion</button>
+          </h5>
+          <p *ngIf="direccion.calle">Calle: {{direccion.calle}}</p>
+          <p *ngIf="direccion.numero!=-1">Numero: {{direccion.numero}}</p>
+          <p *ngIf="direccion.descripcion">Descripcion: {{direccion.descripcion}}</p>
+          <p *ngIf="direccion.piso!=-1">Piso: {{direccion.piso}}</p>
+      </div>
+    </body>

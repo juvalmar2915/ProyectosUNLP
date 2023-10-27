@@ -1,0 +1,37 @@
+<div *ngIf="dataLoaded">
+    <div class="container-lg">
+      <h1>Lista de Productores:</h1>
+      <button *ngIf="rol == 'admin'" type="button" class="btn btn-success btn-rounded" mdbRipple routerLink="/RegistrarProductor"> Registrar un productor</button>
+      <table class="table mt-3">
+          <thead>
+            <tr class="table-secondary">
+              <th scope="col">ID</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Foto</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <ng-container *ngFor="let productor of productores">
+            <tr class="table-warning">
+              
+              <td>{{ productor.id }}</td>
+              <td>{{ productor.nombre }}</td>
+              <td>{{ productor.descripcion }}</td>
+              <td><div class="col-2 px-0">
+                <div class="rounded-5 d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                    <img [src]="productor.foto" 
+                    height="80" 
+                    alt=""
+                    loading="lazy" />
+                </div>
+            </div></td>
+              <td *ngIf="rol == 'admin'"><button type="button" class="btn btn-danger btn-rounded" mdbRipple (click)="eliminarProductor(productor.id)"><i class="bi bi-trash"></i></button><p></p><button type="button" class="btn btn-primary btn-rounded" [routerLink]="['/editar-productor', productor.id]"><i class="bi bi-pencil-square"></i></button></td>
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+    </div>
+    </div>

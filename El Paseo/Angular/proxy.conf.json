@@ -1,0 +1,9 @@
+
+{
+    "/rest/*": {
+      "target": "http://localhost:8080/El_Paseo_Te_Lo_Lleva_Paladino_Blanco",
+      "secure": false,
+      "logLevel": "debug"
+      
+    }
+  }

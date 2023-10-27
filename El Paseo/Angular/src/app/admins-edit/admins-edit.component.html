@@ -1,0 +1,33 @@
+<div *ngIf="dataloaded">
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Perfil Admin</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Edicion de Administrador</h2>
+    <form (ngSubmit)="onSubmit()" #AdminsForm="ngForm">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" [(ngModel)]="admin.nombre" name="nombre" placeholder={{admin.nombre}}>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" [(ngModel)]="admin.email" name="email" placeholder={{admin.email}}>
+        <div *ngIf="errorMessage" class="error-message" style="color: red;">{{ errorMessage }}</div>
+      </div>
+      <div class="form-group">
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" class="form-control" id="contrasena" [(ngModel)]="admin.contrasena" name="contrasena" placeholder={{admin.contrasena}}>
+      </div>
+      <button type="submit" class="btn btn-primary" style="background-color: #569e29;">Guardar Cambios</button>
+    </form>
+  </div>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
+</div>

@@ -1,0 +1,28 @@
+<div *ngIf="dataLoaded">
+    <div class="container-lg">
+      <h1>Lista de Categorias:</h1>
+      <button type="button" class="btn btn-success btn-rounded" mdbRipple routerLink="/RegistrarCategoria"> Registrar una categoria</button>
+      <table class="table mt-3">
+          <thead>
+            <tr class="table-secondary">
+              <th scope="col">ID</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Cantidad Productos</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <ng-container *ngFor="let categoria of categorias">
+            <tr class="table-warning">
+              
+              <td>{{ categoria.id }}</td>
+              <td>{{ categoria.nombre }}</td>
+              <td>{{ categoria.cantidad }}</td>
+              <td><button type="button" class="btn btn-danger btn-rounded" mdbRipple (click)="eliminarCategoria(categoria.id)"><i class="bi bi-trash"></i></button><p></p><button type="button" class="btn btn-primary btn-rounded" [routerLink]="['/editar-categoria', categoria.id]"><i class="bi bi-pencil-square"></i></button></td>
+            </tr>
+          </ng-container>
+          </tbody>
+        </table>
+    </div>
+    </div>

@@ -1,0 +1,32 @@
+<div *ngIf="dataLoaded">
+  <div class="container-lg">
+    <h1>Lista de usuarios:</h1>
+    <table class="table mt-3">
+        <thead>
+          <tr class="table-secondary">
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Email</th>
+            <th scope="col">Contraseña</th>
+            <th scope="col">Telefono</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <ng-container *ngFor="let visitante of usuarios">
+          <tr class="table-info">
+            
+            <td>{{ visitante.id }}</td>
+            <td>{{ visitante.nombre }}</td>
+            <td>{{ visitante.email }}</td>
+            <td>{{ visitante.contrasena }}</td>
+            <td>{{ visitante.telefono }}</td>
+            <td><button type="button" class="btn btn-danger btn-rounded" mdbRipple (click)="eliminarVisitante(visitante.id)"><i class="bi bi-lock-fill"></i></button></td>
+          </tr>
+        </ng-container>
+        </tbody>
+      </table>
+  </div>
+  </div>
+  
