@@ -1,0 +1,22 @@
+Entrega 3:
+Para probar el codigo se deberá ingresar a http://localhost:8080//El_Paseo_Te_Lo_Lleva_Paladino_Blanco/testservlet
+Una vez que se ingresa a dicho sitio en la consola de eclipse aparecerá un menú con distintas opciones las cuales se explicaran a continuación.
+Para que vuelva a aparecer el menú solo hace falta recargar la página.
+
+Opcion 1: Permite generar un pedido por consola en donde se debera ingresar una direccion de envio, dos productos junto a su productor y su categoria y el visitante que realiza el pedido. A la hora de agregar el visitante el
+mail no debe pertenecer a ningun visitante cargado en la base de datos.
+Opcion 2: Se genera un pedido completo pero con datos que ya se encuentra cargados en el codigo. Esta opcion se puede ejecutar una sola vez, si se ejecuta una segunda vez aparecera por consola que el pedido ya se encuentra
+en el sistema.
+Opcion 3: Lista los productos de una categoria. Si no se encuentra ninguna categoria en la base de datos aparecera un mensaje en la consola. Si previamente se ejecuto la opcion 1 o 2 se listaran los 2 productos de la categoria creada.
+Opcion 4: Agrega un usuario a la base de datos.
+Opcion 5: Si se ejecuto la opcion 4, se modificara el nombre de "Juan" por "Juan Perez". Si no aparecera que el usuario no se encuentra en la base de datos.
+Opcion 6: Eliminar el usuario creado en la opcion 4.
+   
+Entrega 4:
+Para probar los servicios REST creados primero se debe poner a correr la aplicación en el servidor Tomcat.
+Si en la base de datos no hay ningún pedido realizado recomendamos crear un pedido usando el servlet creado en la entrega anterior usando el menú 2 que crea un pedido con todos sus datos (esto es porque se dificulta hacer un post de pedido a través de REST por la cantidad de atributos que hay que mandar). 
+Para acceder a dicho servlet se debe ingresar a “localhost:8080/El_Paseo_Te_Lo_Lleva_Paladino_Blanco/testservlet” y luego en consola se despliega el menú de opciones.    
+Finalmente acceder a “localhost:8080/El_Paseo_Te_Lo_Lleva_Paladino_Blanco/swaggerui”.
+Ahí se desplegarán los distintos servicios creados con su respectiva documentación.
+Entrega 5:
+Para correr el angular con los servicios rest utilizar: "ng serve --proxy-config proxy.conf.json" y en el navegador el localhost:4200. Una vez inciado en la base de datos cargar un usuario de id:1 con tal de acceder a todos los servicios de la vista visitante ademas de cargar productos para el catalogo considerando para el atributo foto el siguiente link: "assets/img/nombrefoto.formato" (en la carpeta img ya pueden encontrarse dos imagenes de productos como son barra-shot.png y huevo-pascua.jpeg).
